@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { HttpService } from '../../../service/http/http.service'
 import { ToastService } from '../../../service/toast/toast.service'
+import { Router } from '@angular/router';
 
 
 const votingFormDetails = {
@@ -64,7 +65,8 @@ export class ScrutinyFormComponent {
   constructor(
     private fb: FormBuilder,
     private http: HttpService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -182,6 +184,7 @@ export class ScrutinyFormComponent {
         next: (resp: any) => {
           // this.toastService.success('Successfully saved!')
           this.votingForm.reset()
+          this.router.navigate(['dashboard/file-upload'])
         },
         error: (err) => { },
         complete: () => { },

@@ -3,508 +3,424 @@
         <h5>Polling Station Data For Scrutiny Decision</h5>
     </div>
     <div class="card-body">
+
         <form [formGroup]="votingForm" (ngSubmit)="submitVotingForm()">
-            <div class="table-reponsive">
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                            <td style="width:5%"></td>
-                            <td>
-                                <div class="table-reponsive">
-                                    <table class="table table-borderless mb-0">
-                                        <tbody>
-                                            <tr>
-                                                <td style="width: 50%;">Assembly Constituency Number</td>
-                                                <td style="width: 50%;"><input type="number"
-                                                        class="form-control border-0"
-                                                        formControlName="numberOfConstituency" />
-                                                </td>
-                                            </tr>
-                                            <tr>
+            <div class="row mb-3">
+                <div class="col-md-6 col-12">
+                    <div class="table-responsive">
+                        <table class="table table-borderless mb-0">
+                            <tbody>
+                                <tr>
+                                    <td>Assembly Constituency Number :</td>
+                                    <td><input type="number" class="form-control border-0"
+                                            formControlName="numberOfConstituency" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Polling Station Number :</td>
+                                    <td><input type="number" class="form-control border-0"
+                                            formControlName="numberOfPollingStation" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="table-responsive">
+                        <table class="table table-borderless mb-0">
+                            <tbody>
+                                <tr>
+                                    <td>Assembly Constituency Name :</td>
+                                    <td><input type="text" class="form-control border-0"
+                                            formControlName="nameOfConstituency" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Polling Station Name :</td>
+                                    <td><input type="text" class="form-control border-0"
+                                            formControlName="nameOfPollingStation" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-                                                <td style="width: 50%;">Polling Station Number</td>
-                                                <td style="width: 50%;"><input type="number"
-                                                        class="form-control border-0"
-                                                        formControlName="numberOfPollingStation" />
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="table-reponsive">
-                                    <table class="table table-borderless mb-0">
-                                        <tbody>
-                                            <tr>
-                                                <td style="width: 50%;">Assembly Constituency Name</td>
-                                                <td style="width: 50%;"><input type="text" class="form-control border-0"
-                                                        formControlName="nameOfConstituency" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                <td style="width: 20%;">Polling Station Name</td>
-                                                <td style="width: 20%;"><input type="text" class="form-control border-0"
-                                                        formControlName="nameOfPollingStation" />
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <th>Sr. No.</th>
-                            <th>Indicators</th>
-                            <th>Details</th>
-                        </tr>
-
-                        <ng-container formGroupName="totalElectors">
-
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td style="width: 5%;">1</td>
-                                <td style="width: 40%;">
-                                    <div class="table-reponsive">
-
-                                        <table class="table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <td style="width: 70%;">Total Electors in Polling Station.
-                                                    </td>
-                                                    <td style="width: 30%;">
-                                                        <div class="d-flex align-items-center">
-                                                            <label class="me-2 mb-0">Male:</label>
-                                                            <input type="number" class="form-control border-0"
-                                                                formControlName="male" />
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
-                                <td style="width: 40%;">
-                                    <div class="table-reponsive">
-
-                                        <table class="table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <label class="me-2 mb-0">Female:</label>
-                                                            <input type="number" class="form-control border-0"
-                                                                formControlName="female" />
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <label class="me-2 mb-0">TG:</label>
-                                                            <input type="number" class="form-control border-0"
-                                                                formControlName="tg" />
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <label class="me-2 mb-0">Total:</label>
-                                                            <input type="number" class="form-control border-0"
-                                                                formControlName="total" />
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
+                                <th style="width: 5%;">Sr. No.</th>
+                                <th class="w-50">Indicators</th>
+                                <th>Details</th>
                             </tr>
-                        </ng-container>
+                        </thead>
+                        <tbody>
+                            <!-- Total Electors Section -->
+                            <ng-container formGroupName="totalElectors">
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <div>Total Electors in Polling Station</div>
+                                    </td>
+                                    <td class="d-md-flex gap-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <label class="me-2 mb-0">Male:</label>
+                                            <input type="number" class="form-control text-center border-0"
+                                                formControlName="male" />
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <label class="me-2 mb-0">Female:</label>
+                                            <input type="number" class="form-control text-center border-0"
+                                                formControlName="female" />
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <label class="me-2 mb-0">TG:</label>
+                                            <input type="number" class="form-control text-center border-0"
+                                                formControlName="tg" />
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <label class="me-2 mb-0">Total:</label>
+                                            <input type="number" class="form-control text-center border-0"
+                                                formControlName="total" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-container>
 
-                        <ng-container formGroupName="personsVoted">
-                            <tr>
-                                <td style="width: 5%;">2</td>
-                                <td style="width: 40%;">
-                                    <div class="table-reponsive">
-
-                                        <table class="table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <td style="width: 70%;">Total person voted in Polling Station
-                                                    </td>
-                                                    <td style="width: 30%;">
-                                                        <div class="d-flex align-items-center">
-                                                            <label class="me-2 mb-0">Male:</label>
-                                                            <input type="number" class="form-control border-0"
-                                                                formControlName="male" />
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
-                                <td style="width: 40%;">
-                                    <div class="table-reponsive">
-
-                                        <table class="table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <label class="me-2 mb-0">Female:</label>
-                                                            <input type="number" class="form-control border-0"
-                                                                formControlName="female" />
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <label class="me-2 mb-0">TG:</label>
-                                                            <input type="number" class="form-control border-0"
-                                                                formControlName="tg" />
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <label class="me-2 mb-0">Total:</label>
-                                                            <input type="number" class="form-control border-0"
-                                                                formControlName="total" />
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
-                            </tr>
-                        </ng-container>
-
-
-                        <tr class="align-middle">
-                            <td class="py-0">3</td>
-                            <td class="py-0">Number of Tendered votes</td>
-                            <td class="py-0">
-                                <input type="number" class="form-control border-0 border-none"
-                                    formControlName="tenderedVotes" />
-                            </td>
-                        </tr>
-
-                        <tr class="align-middle">
-                            <td class="py-0">4</td>
-                            <td class="py-0">Number of Challenged votes</td>
-                            <td class="py-0">
-                                <input type="number" class="form-control border-0" formControlName="challengedVotes" />
-                            </td>
-                        </tr>
-                        <tr class="align-middle">
-                            <td class="py-0">5</td>
-                            <td class="py-0">Number of Proxy votes by CSVs</td>
-                            <td class="py-0">
-                                <input type="number" class="form-control border-0" formControlName="proxyVotesByCSVs" />
-                            </td>
-                        </tr>
-                        <tr class="align-middle">
-                            <td class="py-0">6</td>
-                            <td class="py-0">
-                                Number of electors who exercised their right on the basis of
-                                EPIC
-                            </td>
-                            <td class="py-0">
-                                <input type="number" class="form-control border-0" formControlName="votersEPIC" />
-                            </td>
-                        </tr>
-
-                        <tr class="align-middle">
-                            <td class="py-0">7</td>
-                            <td class="py-0">
-                                No. of electors who exercised their right of vote on the
-                                basis of an alternative document
-                            </td>
-                            <td class="py-0">
-                                <input type="number" class="form-control border-0"
-                                    formControlName="votersAlternativeDocument" />
-                            </td>
-                        </tr>
-
-                        <tr class="align-middle">
-                            <td class="py-0">8</td>
-                            <td class="py-0">
-                                No. of voters who exercised their right under Rule 49 O, who
-                                decided not to record the vote
-                            </td>
-                            <td class="py-0">
-                                <input type="number" class="form-control border-0" formControlName="votersRule49O" />
-                            </td>
-                        </tr>
-
-                        <tr class="align-middle">
-                            <td class="py-0">9</td>
-                            <td class="py-0">
-                                No. of polling agents in the polling station
-                            </td>
-                            <td class="py-0">
-                                <input type="number" class="form-control border-0" formControlName="pollingAgents" />
-                            </td>
-                        </tr>
-
-                        <tr class="align-middle">
-                            <td class="py-0">10</td>
-                            <td class="py-0">
-                                No. of overseas electors who voted in the poll
-                            </td>
-                            <td class="py-0">
-                                <input type="number" class="form-control border-0" formControlName="overseasElectors" />
-                            </td>
-                        </tr>
-
-                        <ng-container formGroupName="buCuVvpatUsed">
+                            <!-- Persons Voted Section -->
+                            <ng-container formGroupName="personsVoted">
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <div>Total persons voted in Polling Station</div>
+                                    </td>
+                                    <td class="d-md-flex gap-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <label class="me-2 mb-0">Male:</label>
+                                            <input type="number" class="form-control border-0" formControlName="male" />
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <label class="me-2 mb-0">Female:</label>
+                                            <input type="number" class="form-control border-0"
+                                                formControlName="female" />
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <label class="me-2 mb-0">TG:</label>
+                                            <input type="number" class="form-control border-0" formControlName="tg" />
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <label class="me-2 mb-0">Total:</label>
+                                            <input type="number" class="form-control border-0"
+                                                formControlName="total" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-container>
 
                             <tr class="align-middle">
-                                <td class="py-0">11</td>
-                                <td class="py-0">No. of BU, CU, VVPAT used</td>
-                                <td>
-                                    <table class="table-borderless">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <label class="me-2 mb-0">BU:</label>
-                                                        <input type="number" class="form-control border-0"
-                                                            formControlName="ballotUnit" />
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <label class="me-2 mb-0">CU:</label>
-                                                        <input type="number" class="form-control border-0"
-                                                            formControlName="controlUnit" />
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <label class="me-2 mb-0">VVPAT:</label>
-                                                        <input type="number" class="form-control border-0"
-                                                            formControlName="vvpat" />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                        </ng-container>
-
-
-                        <ng-container formGroupName="buCuVvpatChanged">
-                            <tr class="align-middle">
-                                <td class="py-0">12</td>
+                                <td class="py-0">3</td>
+                                <td class="py-0">Number of Tendered votes</td>
                                 <td class="py-0">
-                                    Whether the BU, CU or VVPAT was changed or replaced
-                                </td>
-                                <td>
-                                    <table class="table-borderless">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <label class="me-2 mb-0 fw-bold">BU:</label>
-                                                        <div class="row w-100">
-                                                            <!-- Make the row take full width -->
-                                                            <div class="col-12 align-items-center">
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="ballotUnit" id="ballotUnitYes"
-                                                                        [value]="true" formControlName="ballotUnit" />
-                                                                    <label class="form-check-label mb-0 "
-                                                                        for="ballotUnitYes">Yes</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="ballotUnit" id="ballotUnitNo"
-                                                                        [value]="false" formControlName="ballotUnit" />
-                                                                    <label class="form-check-label mb-0"
-                                                                        for="ballotUnitNo">No</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td style="
-                                            border-left: 1px solid #ecf3fa;
-                                            border-right: 1px solid #ecf3fa;
-                                        ">
-                                                    <div class="d-flex align-items-center">
-                                                        <label class="me-2 mb-0 fw-bold">CU:</label>
-                                                        <div class="row w-100">
-                                                            <!-- Make the row take full width -->
-                                                            <div class="col-12 align-items-center">
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="controlUnit" id="controlUnitYes"
-                                                                        [value]="true" formControlName="controlUnit" />
-                                                                    <label class="form-check-label"
-                                                                        for="controlUnitYes">Yes</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="controlUnit" id="controlUnitNo"
-                                                                        [value]="false" formControlName="controlUnit" />
-                                                                    <label class="form-check-label"
-                                                                        for="controlUnitNo">No</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex align-items-center ">
-                                                        <label class="me-2 mb-0 fw-bold">VVPAT:</label>
-                                                        <div class="row w-100">
-                                                            <!-- Make the row take full width -->
-                                                            <div class="col-12 align-items-center">
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="vvpat" id="vvpatYes" [value]="true"
-                                                                        formControlName="vvpat" />
-                                                                    <label class="form-check-label"
-                                                                        for="vvpatYes">Yes</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="vvpat" id="vvpatNo" [value]="false"
-                                                                        formControlName="vvpat" />
-                                                                    <label class="form-check-label"
-                                                                        for="vvpatNo">No</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <input type="number" class="form-control border-0 border-none"
+                                        formControlName="tenderedVotes" />
                                 </td>
                             </tr>
-                        </ng-container>
 
-                        <tr class="align-middle">
-                            <td class="py-0">13</td>
-                            <td class="py-0">
-                                If so, the time when changed and what was the reason for it
-                            </td>
-                            <td class="py-0">
-                                <input type="time" class="form-control border-0" formControlName="changeTimeReason" />
-                            </td>
-                        </tr>
+                            <tr class="align-middle">
+                                <td class="py-0">4</td>
+                                <td class="py-0">Number of Challenged votes</td>
+                                <td class="py-0">
+                                    <input type="number" class="form-control border-0"
+                                        formControlName="challengedVotes" />
+                                </td>
+                            </tr>
+                            <tr class="align-middle">
+                                <td class="py-0">5</td>
+                                <td class="py-0">Number of Proxy votes by CSVs</td>
+                                <td class="py-0">
+                                    <input type="number" class="form-control border-0"
+                                        formControlName="proxyVotesByCSVs" />
+                                </td>
+                            </tr>
+                            <tr class="align-middle">
+                                <td class="py-0">6</td>
+                                <td class="py-0">
+                                    Number of electors who exercised their right on the basis of
+                                    EPIC
+                                </td>
+                                <td class="py-0">
+                                    <input type="number" class="form-control border-0" formControlName="votersEPIC" />
+                                </td>
+                            </tr>
 
-                        <tr class="align-middle">
-                            <td class="py-0">14</td>
-                            <td class="py-0">Total ASD voters in the ASD voters list</td>
-                            <td class="py-0">
-                                <input type="number" class="form-control border-0" formControlName="totalAsdVoters" />
-                            </td>
-                        </tr>
+                            <tr class="align-middle">
+                                <td class="py-0">7</td>
+                                <td class="py-0">
+                                    No. of electors who exercised their right of vote on the
+                                    basis of an alternative document
+                                </td>
+                                <td class="py-0">
+                                    <input type="number" class="form-control border-0"
+                                        formControlName="votersAlternativeDocument" />
+                                </td>
+                            </tr>
 
-                        <tr class="align-middle">
-                            <td class="py-0">15</td>
-                            <td class="py-0">
-                                Total persons who cast their vote from the ASD voters list
-                            </td>
-                            <td class="py-0">
-                                <input type="number" class="form-control border-0"
-                                    formControlName="totalAsdVotesCast" />
-                            </td>
-                        </tr>
+                            <tr class="align-middle">
+                                <td class="py-0">8</td>
+                                <td class="py-0">
+                                    No. of voters who exercised their right under Rule 49 O, who
+                                    decided not to record the vote
+                                </td>
+                                <td class="py-0">
+                                    <input type="number" class="form-control border-0"
+                                        formControlName="votersRule49O" />
+                                </td>
+                            </tr>
 
-                        <tr class="align-middle">
-                            <td class="py-0">16</td>
-                            <td class="py-0">
-                                Any incident of violence or poll interruption due to any
-                                reason
-                            </td>
-                            <td class="py-2 d-flex flex-column align-items-start">
-                                <div class="d-flex w-100">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="violencePollInterruption"
-                                            id="incidentORinterruptionYes" [value]="true"
-                                            formControlName="violencePollInterruption" />
-                                        <label class="form-check-label" for="incidentORinterruptionYes">Yes</label>
+                            <tr class="align-middle">
+                                <td class="py-0">9</td>
+                                <td class="py-0">
+                                    No. of polling agents in the polling station
+                                </td>
+                                <td class="py-0">
+                                    <input type="number" class="form-control border-0"
+                                        formControlName="pollingAgents" />
+                                </td>
+                            </tr>
+
+                            <tr class="align-middle">
+                                <td class="py-0">10</td>
+                                <td class="py-0">
+                                    No. of overseas electors who voted in the poll
+                                </td>
+                                <td class="py-0">
+                                    <input type="number" class="form-control border-0"
+                                        formControlName="overseasElectors" />
+                                </td>
+                            </tr>
+
+                            <ng-container formGroupName="buCuVvpatUsed">
+
+                                <tr class="align-middle">
+                                    <td class="py-0">11</td>
+                                    <td class="py-0">No. of BU, CU, VVPAT used</td>
+                                    <td class="d-md-flex gap-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <label class="me-2 mb-0">BU:</label>
+                                            <input type="number" class="form-control border-0"
+                                                formControlName="ballotUnit" />
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <label class="me-2 mb-0">CU:</label>
+                                            <input type="number" class="form-control border-0"
+                                                formControlName="controlUnit" />
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <label class="me-2 mb-0">VVPAT:</label>
+                                            <input type="number" class="form-control border-0"
+                                                formControlName="vvpat" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <ng-container formGroupName="buCuVvpatChanged">
+                                <tr class="align-middle">
+                                    <td class="py-0">12</td>
+                                    <td class="py-0">
+                                        Whether the BU, CU or VVPAT was changed or replaced
+                                    </td>
+                                    <td class="d-md-flex justify-content-md-between gap-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <label class="me-2 mb-0 fw-bold">BU:</label>
+                                            <div class="row d-flex w-100">
+                                                <!-- Make the row take full width -->
+                                                <div class="col-12 align-items-center">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="ballotUnit"
+                                                            id="ballotUnitYes" [value]="true"
+                                                            formControlName="ballotUnit" />
+                                                        <label class="form-check-label mb-0 "
+                                                            for="ballotUnitYes">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="ballotUnit"
+                                                            id="ballotUnitNo" [value]="false"
+                                                            formControlName="ballotUnit" />
+                                                        <label class="form-check-label mb-0"
+                                                            for="ballotUnitNo">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <label class="me-2 mb-0 fw-bold">CU:</label>
+                                            <div class="row w-100">
+                                                <!-- Make the row take full width -->
+                                                <div class="col-12 align-items-center">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="controlUnit"
+                                                            id="controlUnitYes" [value]="true"
+                                                            formControlName="controlUnit" />
+                                                        <label class="form-check-label" for="controlUnitYes">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="controlUnit"
+                                                            id="controlUnitNo" [value]="false"
+                                                            formControlName="controlUnit" />
+                                                        <label class="form-check-label" for="controlUnitNo">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <label class="me-2 mb-0 fw-bold">VVPAT:</label>
+                                            <div class="row w-100">
+                                                <!-- Make the row take full width -->
+                                                <div class="col-12 align-items-center">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="vvpat"
+                                                            id="vvpatYes" [value]="true" formControlName="vvpat" />
+                                                        <label class="form-check-label" for="vvpatYes">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="vvpat"
+                                                            id="vvpatNo" [value]="false" formControlName="vvpat" />
+                                                        <label class="form-check-label" for="vvpatNo">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </ng-container>
+
+                            <tr class="align-middle">
+                                <td class="py-0">13</td>
+                                <td class="py-0">
+                                    If so, the time when changed and what was the reason for it
+                                </td>
+                                <td class="py-0">
+                                    <input type="time" class="form-control border-0"
+                                        formControlName="changeTimeReason" />
+                                </td>
+                            </tr>
+
+                            <tr class="align-middle">
+                                <td class="py-0">14</td>
+                                <td class="py-0">Total ASD voters in the ASD voters list</td>
+                                <td class="py-0">
+                                    <input type="number" class="form-control border-0"
+                                        formControlName="totalAsdVoters" />
+                                </td>
+                            </tr>
+
+                            <tr class="align-middle">
+                                <td class="py-0">15</td>
+                                <td class="py-0">
+                                    Total persons who cast their vote from the ASD voters list
+                                </td>
+                                <td class="py-0">
+                                    <input type="number" class="form-control border-0"
+                                        formControlName="totalAsdVotesCast" />
+                                </td>
+                            </tr>
+
+                            <tr class="align-middle">
+                                <td class="py-0">16</td>
+                                <td class="py-0">
+                                    Any incident of violence or poll interruption due to any
+                                    reason
+                                </td>
+                                <td class="py-2 d-flex flex-column align-items-start">
+                                    <div class="d-flex w-100">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="violencePollInterruption"
+                                                id="incidentORinterruptionYes" [value]="true"
+                                                formControlName="violencePollInterruption" />
+                                            <label class="form-check-label" for="incidentORinterruptionYes">Yes</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="violencePollInterruption"
+                                                id="incidentORinterruptionNo" [value]="false"
+                                                formControlName="violencePollInterruption" />
+                                            <label class="form-check-label" for="incidentORinterruptionNo">No</label>
+                                        </div>
                                     </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="violencePollInterruption"
-                                            id="incidentORinterruptionNo" [value]="false"
-                                            formControlName="violencePollInterruption" />
-                                        <label class="form-check-label" for="incidentORinterruptionNo">No</label>
-                                    </div>
-                                </div>
 
-                                <!-- Ensure proper spacing and alignment for the textarea -->
-                                <div class="w-100 mt-2">
-                                    <label class="col-form-label">Reason for poll interruption:</label>
-                                    <textarea class="form-control" formControlName="reasonForPollInterruption"
-                                        rows="2"></textarea>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="align-middle">
-                            <td class="py-0">17</td>
-                            <td class="py-0">
-                                Any complaints received with respect to polling station
-                            </td>
-                            <td class="py-2 d-flex align-items-center">
-                                <div class="col-sm-4">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="complaintsReceived"
-                                            id="complaintReceivedYes" [value]="true"
-                                            formControlName="complaintsReceived" />
-                                        <label class="form-check-label" for="complaintReceivedYes">Yes</label>
+                                    <!-- Ensure proper spacing and alignment for the textarea -->
+                                    <div class="w-100 mt-1" *ngIf="showPollInterruptionInput">
+                                        <label class="col-form-label">Reason for poll interruption:</label>
+                                        <textarea class="form-control" formControlName="reasonForPollInterruption"
+                                            rows="2"></textarea>
                                     </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="complaintsReceived"
-                                            id="complaintReceivedNo" [value]="false"
-                                            formControlName="complaintsReceived" />
-                                        <label class="form-check-label" for="complaintReceivedNo">No</label>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
 
-                        <tr class="align-middle">
-                            <td class="py-0">18</td>
-                            <td class="py-0">Recommendation of RO for Re-poll</td>
-                            <td class="py-2 d-flex flex-column align-items-start">
-                                <div class="d-flex w-100">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="recommendataionOfRepoll"
-                                            id="repollYes" [value]="true" formControlName="recommendataionOfRepoll" />
-                                        <label class="form-check-label" for="repollYes">Yes</label>
+                            <tr class="align-middle">
+                                <td class="py-0">17</td>
+                                <td class="py-0">
+                                    Any complaints received with respect to polling station
+                                </td>
+                                <td class="py-2 d-flex align-items-center">
+                                    <div class="col-sm-4">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="complaintsReceived"
+                                                id="complaintReceivedYes" [value]="true"
+                                                formControlName="complaintsReceived" />
+                                            <label class="form-check-label" for="complaintReceivedYes">Yes</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="complaintsReceived"
+                                                id="complaintReceivedNo" [value]="false"
+                                                formControlName="complaintsReceived" />
+                                            <label class="form-check-label" for="complaintReceivedNo">No</label>
+                                        </div>
                                     </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="recommendataionOfRepoll"
-                                            id="repollNo" [value]="false" formControlName="recommendataionOfRepoll" />
-                                        <label class="form-check-label" for="repollNo">No</label>
-                                    </div>
-                                </div>
+                                </td>
+                            </tr>
 
-                                <!-- Ensure proper spacing and alignment for the textarea -->
-                                <div class="w-100 mt-2">
-                                    <label class="col-form-label">Reason for Re-poll:</label>
-                                    <textarea class="form-control" formControlName="reasonForRepoll"
-                                        rows="2"></textarea>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            <tr class="align-middle">
+                                <td class="py-0">18</td>
+                                <td class="py-0">Recommendation of RO for Re-poll</td>
+                                <td class="py-2 d-flex flex-column align-items-start">
+                                    <div class="d-flex w-100">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="recommendataionOfRepoll"
+                                                id="repollYes" [value]="true"
+                                                formControlName="recommendataionOfRepoll" />
+                                            <label class="form-check-label" for="repollYes">Yes</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="recommendataionOfRepoll"
+                                                id="repollNo" [value]="false"
+                                                formControlName="recommendataionOfRepoll" />
+                                            <label class="form-check-label" for="repollNo">No</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ensure proper spacing and alignment for the textarea -->
+                                    <div class="w-100 mt-1" *ngIf="showRePollInput">
+                                        <label class="col-form-label">Reason for Re-poll:</label>
+                                        <textarea class="form-control" formControlName="reasonForRepoll"
+                                            rows="2"></textarea>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="text-center my-5">
-                <button type="button" class="btn btn-secondary me-3 px-5" (click)="patchFormValue()">auto fill</button>
-                <button type="reset" class="btn btn-secondary me-3 px-5" routerLink="/dashboard">
+                <button type="button" class="btn btn-dark me-3" (click)="patchFormValue()">Auto
+                    fill</button>
+                <button type="reset" class="btn btn-secondary me-3 px-4" routerLink="/dashboard">
                     Cancel
                 </button>
-                <button type="submit" class="btn btn-primary me-2 px-5">Submit</button>
+                <button type="submit" class="btn btn-primary me-2 px-4">Submit</button>
             </div>
         </form>
     </div>

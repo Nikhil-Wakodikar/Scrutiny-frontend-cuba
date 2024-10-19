@@ -30,6 +30,7 @@ import { SwiperComponent } from './components/header/elements/swiper/swiper.comp
 import { SvgIconComponent } from "./components/svg-icon/svg-icon.component";
 import { LayoutService } from "./services/layout.service";
 import { NavService } from "./services/nav.service";
+import { LoadingBarModule } from "@ngx-loading-bar/core";
 
 @NgModule({
   declarations: [
@@ -53,11 +54,12 @@ import { NavService } from "./services/nav.service";
     SwiperComponent,
   ],
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    LoadingBarModule,
     // DragulaModule.forRoot(),
     TranslateModule.forRoot(),
     SwiperModule],
@@ -66,4 +68,4 @@ import { NavService } from "./services/nav.service";
     TranslateModule,
     LoaderComponent, BreadcrumbComponent, FeatherIconsComponent, TapToTopComponent, SvgIconComponent, SwiperModule],
 })
-export class SharedModule {}
+export class SharedModule { }
